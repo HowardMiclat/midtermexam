@@ -1,0 +1,36 @@
+.App {
+  box-sizing: border-box;
+  
+}
+
+.CalcContainer{
+  border: 5px solid springgreen;
+  width: 600px;
+  margin: auto;
+}
+
+.DispContainer {
+  border: 5px solid black;
+  height: 40px;
+  background-color: gray;
+}
+
+.Display{
+  font-size: 2em;
+  color: white;
+  text-align: right;
+}
+
+.ButtContainer{
+  border: 5px solid yellow;
+  height: 400px;
+  display: grid;
+  grid-template-columns:repeat(4, 1fr);
+}
+
+.ButtContainer > button{
+  font-size: 2em;
+  background-color: aquamarine;
+  border: 1px solid red;
+  margin: 5px;
+}
