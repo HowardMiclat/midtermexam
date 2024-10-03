@@ -93,6 +93,7 @@ function App() {
     setNum1(null);
     setNum2(null);
     setOp(null);
+    setIsNum2(false);  
   };
 
   const surnameClickHandler = () => {
