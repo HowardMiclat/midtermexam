@@ -18,82 +18,35 @@ function Key({ label, ClickHandler }) {
 }
 
 function App() {
-  const [disp, setDisp] = useState(0);
-  const [num1, setNum1] = useState(null);
-  const [num2, setNum2] = useState(null);
-  const [op, setOp] = useState(null);
-  const [isNum2, setIsNum2] = useState(false);
+  const [disp, setDisp] = useState("10 Things That Require Zero Talent");
+  const messages = {
+    1: "Being On Time",
+    2: "Making An Effort",
+    3: "Being High Energy",
+    4: "Having A Positive Attitude",
+    5: "Being Passionate",
+    6: "Using Good Body Language",
+    7: "Being Coachable",
+    8: "Doing A Little Extra",
+    9: "Being Prepared",
+    0: "Having A Strong Work Ethic"
+  };
   
 
   const numClickHandler = (e) => {
     e.preventDefault();
     const value = e.target.innerHTML;
-    if (!isNum2) {
-      if (num1 === null) {
-        setNum1(value);
-        setDisp(value);  
-      } else {
-        setNum1(num1 + value);
-        setDisp(num1 + value);  
-      }
-    } else {
-      if (num2 === null) {
-        setNum2(value);
-        setDisp(value);  
-      } else {
-        setNum2(num2 + value);
-        setDisp(num2 + value);  
-      }
-    }
+    setDisp(messages[value]); 
   };
   
 
-  const opClickHandler = (e) => {
-    e.preventDefault();
-    const value = e.target.innerHTML;
-    
-  if (num1 !== null) {
-    setOp(value);
-    setIsNum2(true);  
-    setDisp(value);   
-  }
-  };
-
   
 
-  const eqClickHandler = (e) => {
-    e.preventDefault();
-    
-    if (num1 !== null && num2 !== null && op !== null) {
-      let result = null;
-      if (op === "+") {
-        result = parseInt(num1) + parseInt(num2);
-      } else if (op === "-") {
-        result = parseInt(num1) - parseInt(num2);
-      } else if (op === "*") {
-        result = parseInt(num1) * parseInt(num2);
-      } else if (op === "/") {
-        result = parseInt(num1) / parseInt(num2);
-      } else {
-      result = "ERROR";
-    }
   
-    setDisp(result);
-    setNum1(result);
-    setNum2(null);
-    setOp(null);
-    setIsNum2(false);
-    
-  }
-  };
 
   const clrClickHandler = (e) => {
     e.preventDefault();
-    setDisp(0);
-    setNum1(null);
-    setNum2(null);
-    setOp(null);
-    setIsNum2(false);  
+    setDisp("10 Things That Require Zero Talent"); // Reset message
   };
 
   const surnameClickHandler = () => {
@@ -103,37 +56,31 @@ function App() {
   return (
     <div className="App">
       <header className="AppHeader">
-        Calculator of Jerome Howard Santos Miclat - IT3A
+        Jerome Howard Santos Miclat IT3A
       </header>
       <div className='CalcContainer'>
         <div className='DispContainer'>
           <Display display={disp} />
         </div>
         <div className='ButtContainer'>
-          <Key label={7} ClickHandler={numClickHandler} />
-          <Key label={8} ClickHandler={numClickHandler} />
-          <Key label={9} ClickHandler={numClickHandler} />
-          <Key label={'+'} ClickHandler={opClickHandler} />
-          <Key label={4} ClickHandler={numClickHandler} />
-          <Key label={5} ClickHandler={numClickHandler} />
-          <Key label={6} ClickHandler={numClickHandler} />
-          <Key label={'-'} ClickHandler={opClickHandler} />
           <Key label={1} ClickHandler={numClickHandler} />
           <Key label={2} ClickHandler={numClickHandler} />
           <Key label={3} ClickHandler={numClickHandler} />
-          <Key label={'*'} ClickHandler={opClickHandler} />
-          <Key label={'clr'} ClickHandler={clrClickHandler} />
+          <Key label={4} ClickHandler={numClickHandler} />
+          <Key label={5} ClickHandler={numClickHandler} />
+          <Key label={6} ClickHandler={numClickHandler} />
+          <Key label={7} ClickHandler={numClickHandler} />
+          <Key label={8} ClickHandler={numClickHandler} />
+          <Key label={9} ClickHandler={numClickHandler} />
           <Key label={0} ClickHandler={numClickHandler} />
-          <Key label={'='} ClickHandler={eqClickHandler} />
-          <Key label={'/'} ClickHandler={opClickHandler} />
-          
-           </div>
-           <div className='Surnamebutton'>
-           <Key label={'Miclat'} ClickHandler={surnameClickHandler} />
+          <Key label={'clr'} ClickHandler={clrClickHandler} />
+        </div>
+        <div className='Surnamebutton'>
+          <Key label={'Miclat'} ClickHandler={surnameClickHandler} />
         </div>
       </div>
     </div>
   );
 }
 
-export default App;
+export default App; 
